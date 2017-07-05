@@ -11,51 +11,43 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:orientation="horizontal" >
-        <ImageView
+        <ImageButton
             android:id="@+id/new_canvas"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:contentDescription="@string/start_new"
 
-            android:src="@drawable/ic_note_outline_white_48dp"
+            android:src="@drawable/ic_insert_drive_file_black_48dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp"
             />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_gravity="center_vertical">
-        <ImageView
+        <ImageButton
             android:id="@+id/brush"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:contentDescription="@string/start_new"
 
-            android:src="@drawable/ic_pen_white_48dp"
-
+            android:src="@drawable/ic_brush_black_48dp"
+            android:layout_gravity="center_vertical"
             android:layout_margin="5dp"/>
-        <ImageView
+        <ImageButton
             android:id="@+id/erase"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:contentDescription="@string/start_new"
 
-            android:src="@drawable/ic_eraser_variant_white_48dp"
-
+            android:src="@drawable/ic_panorama_wide_angle_black_48dp"
+            android:layout_gravity="center_vertical"
             android:layout_margin="5dp"/>
-        </LinearLayout>
-        <ImageView
+        <ImageButton
             android:id="@+id/save"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:contentDescription="@string/start_new"
 
-            android:src="@drawable/ic_content_save_white_48dp"
+            android:src="@drawable/ic_save_black_48dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp"/>
 
         <!--<Button-->
             <!--android:id="@+id/undo"-->
@@ -135,13 +127,6 @@
                 android:src="@drawable/paint"
                 android:tag="#02ff02" />
 
-
-        </LinearLayout>
-        <!-- Bottom Row -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
             <ImageButton
                 android:layout_width="@dimen/large_brush"
                 android:layout_height="@dimen/large_brush"
@@ -181,7 +166,7 @@
                 android:onClick="paintClicked"
                 android:src="@drawable/paint"
                 android:tag="#FFFFFFFF" />
-
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

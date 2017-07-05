@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,15 +58,15 @@ public class MainActivity extends Activity {
         saveImage();
     }
 
-    @OnClick(R.id.undo)
-    void undo() {
-        EventBus.getDefault().postSticky(new UndoEvent());
-    }
-
-    @OnClick(R.id.redo)
-    void redo() {
-        EventBus.getDefault().postSticky(new RedoEvent());
-    }
+//    @OnClick(R.id.undo)
+//    void undo() {
+//        EventBus.getDefault().postSticky(new UndoEvent());
+//    }
+//
+//    @OnClick(R.id.redo)
+//    void redo() {
+//        EventBus.getDefault().postSticky(new RedoEvent());
+//    }
 
 
 
@@ -85,7 +88,7 @@ public class MainActivity extends Activity {
 
     public void paintClicked(View view) {
         if (view != currPaint) {
-            ImageButton imgView = (ImageButton) view;
+            ImageView imgView = (ImageView) view;
             String color = view.getTag().toString();
 
             drawView.setColor(color);
@@ -182,7 +185,6 @@ public class MainActivity extends Activity {
     private void brushSizeDialog(final boolean isErase) {
         final Dialog brushSizeDialog = new Dialog(this);
 
-//        brushSizeDialog.setTitle(isErase ? R.string.erase_size : R.string.brush_size);
         brushSizeDialog.setContentView(R.layout.brush_chooser);
         ((TextView) brushSizeDialog.findViewById(R.id.title)).setText(isErase ? R.string.erase_size : R.string.brush_size);
         brushSizeDialog.show();
@@ -218,5 +220,20 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+        setContentView(R.layout.activity_main);
+//        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            setContentView(R.layout.activity_main);
+//            Log.e("On Config Change","PORTRAIT");
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            setContentView(R.layout.activity_main_landscape);
+//            Log.e("On Config Change","LANDSCAPE");
+//        }
+    }
+
 
 }

@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="false">
         <activity android:name="com.drawingapp.tryit.MainActivity"
+            android:configChanges="keyboardHidden|orientation"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

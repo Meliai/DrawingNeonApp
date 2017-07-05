@@ -18,6 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.UUID;
@@ -58,15 +62,9 @@ public class MainActivity extends Activity {
         saveImage();
     }
 
-//    @OnClick(R.id.undo)
-//    void undo() {
-//        EventBus.getDefault().postSticky(new UndoEvent());
-//    }
-//
-//    @OnClick(R.id.redo)
-//    void redo() {
-//        EventBus.getDefault().postSticky(new RedoEvent());
-//    }
+    private static final String TAG = "MainActivity";
+
+    private AdView mAdView;
 
 
 
@@ -83,6 +81,11 @@ public class MainActivity extends Activity {
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
 
 

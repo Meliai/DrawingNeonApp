@@ -2,9 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
     <LinearLayout
         android:id="@+id/ll_interactions"
         android:layout_width="match_parent"
@@ -83,17 +84,13 @@
         android:background="#000000" />
 
     <LinearLayout
+        android:id="@+id/paint_colors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_margin="10dp">
-        <!-- Top Row -->
-        <LinearLayout
-            android:id="@+id/paint_colors"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+
 
             <ImageButton
                 android:layout_width="@dimen/large_brush"
@@ -135,13 +132,6 @@
                 android:src="@drawable/paint"
                 android:tag="#02ff02" />
 
-
-        </LinearLayout>
-        <!-- Bottom Row -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
             <ImageButton
                 android:layout_width="@dimen/large_brush"
                 android:layout_height="@dimen/large_brush"
@@ -182,6 +172,15 @@
                 android:src="@drawable/paint"
                 android:tag="#FFFFFFFF" />
 
-        </LinearLayout>
+
     </LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

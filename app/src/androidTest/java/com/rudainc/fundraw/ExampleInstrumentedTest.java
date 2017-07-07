@@ -1,4 +1,4 @@
-package com.fundraw;
+package com.rudainc.fundraw;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

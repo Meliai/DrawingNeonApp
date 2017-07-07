@@ -26,6 +26,7 @@
     <string name="image_saved">Drawing saved to Gallery!</string>
     <string name="image_saving_error">Oops! Image could not be saved.</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1227764705187744/9769371717</string>
+    <string name="id_app_ads">ca-app-pub-1227764705187744~6815905314</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.fundraw;
+package com.rudainc.fundraw;
 
 import android.Manifest;
 import android.app.Activity;
@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
     LinearLayout paintLayout;
     @BindView(R.id.canvas)
     CanvasView drawView;
-    @BindView(R.id.adView)
+
+
     private float smallBrush, mediumBrush, largeBrush;
     private EventBus eventBus;
 
@@ -223,18 +224,6 @@ public class MainActivity extends Activity {
     }
 
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-            super.onConfigurationChanged(newConfig);
-        setContentView(R.layout.activity_main);
-//        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-//            setContentView(R.layout.activity_main);
-//            Log.e("On Config Change","PORTRAIT");
-//        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            setContentView(R.layout.activity_main_landscape);
-//            Log.e("On Config Change","LANDSCAPE");
-//        }
-    }
 
 
 }

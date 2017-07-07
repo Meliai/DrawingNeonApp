@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:409724763974:android:f3b126503874c5a1",
+        "mobilesdk_app_id": "1:409724763974:android:0b802294aa9a9dc3",
         "android_client_info": {
-          "package_name": "com.drawingapp.tryit"
+          "package_name": "com.rudainc.fundraw"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "409724763974-cqai3msrc2hbd5nmun445be5n1e39dv8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.drawingapp.tryit",
-            "certificate_hash": "d3afc175b17eca5f2c997413d8d1a0a0ae8a7210"
-          }
-        },
         {
           "client_id": "409724763974-7eudiavkahfsgkj8gk4hipsf85cl5m62.apps.googleusercontent.com",
           "client_type": 3
@@ -30,6 +22,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyCOzxV6-uCX4DXHISK47FF7DlImcAlSm-g"
+        },
+        {
+          "current_key": "AIzaSyCoMIwjYJA-d-S7PRUYX8tUrsuMG_hfcPY"
         }
       ],
       "services": {
@@ -37,13 +32,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "409724763974-7eudiavkahfsgkj8gk4hipsf85cl5m62.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

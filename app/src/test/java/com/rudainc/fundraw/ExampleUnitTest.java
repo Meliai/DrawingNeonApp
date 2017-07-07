@@ -1,4 +1,4 @@
-package com.fundraw;
+package com.rudainc.fundraw;
 
 import org.junit.Test;
 

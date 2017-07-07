@@ -1,4 +1,4 @@
-package com.fundraw;
+package com.rudainc.fundraw;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,7 +15,6 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 
@@ -159,18 +158,6 @@ public class CanvasView extends View {
             invalidate();
         }
     }
-
-    @Subscribe
-    public void OnUndo(UndoEvent event) {
-       undo();
-    }
-
-    @Subscribe
-    public void OnRedo(RedoEvent event) {
-       redo();
-    }
-
-
 
     private int stuff; // stuff
 

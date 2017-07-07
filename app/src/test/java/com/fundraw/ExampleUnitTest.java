@@ -1,4 +1,4 @@
-package com.drawingapp.tryit;
+package com.fundraw;
 
 import org.junit.Test;
 

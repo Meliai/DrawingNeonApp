@@ -1,4 +1,4 @@
-package com.drawingapp.tryit;
+package com.fundraw;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,12 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.UUID;
-import java.util.concurrent.Phaser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +36,7 @@ public class MainActivity extends Activity {
     LinearLayout paintLayout;
     @BindView(R.id.canvas)
     CanvasView drawView;
+    @BindView(R.id.adView)
     private float smallBrush, mediumBrush, largeBrush;
     private EventBus eventBus;
 

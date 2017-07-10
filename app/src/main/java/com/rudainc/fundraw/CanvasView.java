@@ -11,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -55,8 +56,8 @@ public class CanvasView extends View {
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(20);
         drawPaint.setStyle(Paint.Style.STROKE);
-        drawPaint.setStrokeJoin(Paint.Join.ROUND);
-        drawPaint.setStrokeCap(Paint.Cap.ROUND);
+        drawPaint.setStrokeJoin(Paint.Join.MITER);
+        drawPaint.setStrokeCap(Paint.Cap.BUTT);
 //        drawPaint.setMaskFilter(new BlurMaskFilter(50, BlurMaskFilter.Blur.SOLID));
 
         canvasPaint = new Paint(Paint.DITHER_FLAG);
@@ -90,12 +91,15 @@ public class CanvasView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+
                 drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
                 drawPath.lineTo(touchX, touchY);
+
                 break;
             case MotionEvent.ACTION_UP:
+
                 drawCanvas.drawPath(drawPath, drawPaint);
                 paths.add(drawPath);
                 drawPath.reset();

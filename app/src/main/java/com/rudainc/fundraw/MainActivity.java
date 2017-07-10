@@ -4,12 +4,16 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,11 +21,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.share.ShareApi;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -40,6 +58,9 @@ public class MainActivity extends Activity {
 
     private float smallBrush, mediumBrush, largeBrush;
     private EventBus eventBus;
+    private ShareDialog shareDialog;
+    private CallbackManager callbackManager;
+    private LoginManager manager;
 
     @OnClick(R.id.new_canvas)
     void new_paper() {
@@ -61,6 +82,38 @@ public class MainActivity extends Activity {
         saveImage();
     }
 
+    @OnClick(R.id.share)
+    void share(){
+        callbackManager = CallbackManager.Factory.create();
+
+        List<String> permissionNeeds = Arrays.asList("publish_actions");
+
+        manager = LoginManager.getInstance();
+
+        manager.logInWithPublishPermissions(this, permissionNeeds);
+
+        manager.registerCallback(callbackManager, new  FacebookCallback<LoginResult>()
+        {
+            @Override
+            public void onSuccess(LoginResult loginResult)
+            {
+                publishImage();
+            }
+
+            @Override
+            public void onCancel()
+            {
+                Log.i("Share", "canceled");
+            }
+
+            @Override
+            public void onError(FacebookException exception)
+            {
+                Log.i("Share", "error "+exception.toString());
+            }
+        });
+    }
+
     private static final String TAG = "MainActivity";
 
     private AdView mAdView;
@@ -72,6 +125,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         currPaint = (ImageButton) paintLayout.getChildAt(0);
         currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
@@ -86,6 +141,33 @@ public class MainActivity extends Activity {
         mAdView.loadAd(adRequest);
 
     }
+
+    private void publishImage(){
+        drawView.setDrawingCacheEnabled(true);
+        Log.i("Share","yaaaay!!!"+ drawView.getDrawingCache());
+
+        Bitmap image = drawView.getDrawingCache();
+
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(image)
+                .build();
+
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+
+        ShareDialog shareDialog = new ShareDialog(this);
+        shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
+        drawView.destroyDrawingCache();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int responseCode,    Intent data)
+    {
+        super.onActivityResult(requestCode, responseCode, data);
+        callbackManager.onActivityResult(requestCode, responseCode, data);
+    }
+
 
 
     public void paintClicked(View view) {
